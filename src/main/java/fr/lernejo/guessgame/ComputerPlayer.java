@@ -9,6 +9,7 @@ public class ComputerPlayer implements Player{
     public final Logger logger = LoggerFactory.getLogger("player");
     public Scanner console = new Scanner(System.in);
     public long min = 0;
+    public long max = Integer.MAX_VALUE;
 
     public long getMin() {
         return min;
@@ -17,8 +18,6 @@ public class ComputerPlayer implements Player{
     public long getMax() {
         return max;
     }
-
-    public long max = Integer.MAX_VALUE;
 
     public void setMin(long min) {
         this.min = min;
@@ -30,7 +29,7 @@ public class ComputerPlayer implements Player{
 
     @Override
     public long askNextGuess() {
-        return 0;
+        return dicho();
     }
 
     public long dicho() {
@@ -41,10 +40,12 @@ public class ComputerPlayer implements Player{
     public void respond(boolean lowerOrGreater) {
         if (lowerOrGreater == true){
             logger.log("Lower");
+            setMax(dicho());
         }
         else{
             logger.log("Greater");
+            setMin(dicho());
         }
-
     }
 }
+
