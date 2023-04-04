@@ -1,22 +1,46 @@
 package fr.lernejo.guessgame;
 
-public class ComputerPlayer implements Player {
-	private long min = Long.MIN_VALUE, max = Long.MAX_VALUE;
-	private long lastGuess = 0;
+import fr.lernejo.logger.Logger;
+import fr.lernejo.logger.LoggerFactory;
 
-	@Override
-	public long askNextGuess() {
-		long c  = (min+max) / 2;
-		lastGuess = c;
-		return c;
-	}
+import java.util.Scanner;
 
-	@Override
-	public void respond(boolean lowerOrGreater) {
-		if(lowerOrGreater)
-			min = lastGuess;
-		else
-			max = lastGuess;
-	}
+public class ComputerPlayer implements Player{
+    public final Logger logger = LoggerFactory.getLogger("player");
+    public Scanner console = new Scanner(System.in);
+    public long min = 0;
+    public long max = Integer.MAX_VALUE;
 
+    public void setMin(long min) {
+        this.min = min;
+    }
+
+    public void setMax(long max) {
+        this.max = max;
+    }
+
+    @Override
+    public long askNextGuess() {
+        return dicho();
+    }
+
+    public long dicho() {
+        return ((getMax() + getMin()) / 2);
+    }
+
+    @Override
+    public void respond(boolean lowerOrGreater) {
+        if (lowerOrGreater == true){
+            logger.log("Lower");
+            setMax(dicho());
+        }
+        else{
+            logger.log("Greater");
+            setMin(dicho());
+        }
+        if (getMax() - getMin() <= 1) {
+            logger.log("I have found your number!");
+        }
+    }
 }
+
