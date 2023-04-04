@@ -11,6 +11,14 @@ public class ComputerPlayer implements Player{
     public long min = 0;
     public long max = Integer.MAX_VALUE;
 
+    public long getMin() {
+        return min;
+    }
+
+    public long getMax() {
+        return max;
+    }
+
     public void setMin(long min) {
         this.min = min;
     }
@@ -37,9 +45,6 @@ public class ComputerPlayer implements Player{
         else{
             logger.log("Greater");
             setMin(dicho());
-        }
-        if (getMax() - getMin() <= 1) {
-            logger.log("I have found your number!");
         }
     }
 }
