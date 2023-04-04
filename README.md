@@ -1,3 +1,3 @@
-# decoupling_java_training
-[![codecov](https://codecov.io/gh/HyperLan-git/maven_training/branch/main/graph/badge.svg)](https://codecov.io/gh/HyperLan-git/maven_training)
-![build](https://github.com/HyperLan-git/maven_training/actions/workflows/build.yml/badge.svg)
+# decoupling java training
+[![codecov](https://codecov.io/gh/Morami42Sh/decoupling_java_training/branch/main/graph/badge.svg)](https://codecov.io/gh/Morami42Sh/decoupling_java_training)
+![build](https://github.com/Morami42Sh/decoupling_java_training/actions/workflows/build.yml/badge.svg)
