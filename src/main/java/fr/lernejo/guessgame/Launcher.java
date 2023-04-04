@@ -14,12 +14,12 @@ public class Launcher {
             SecureRandom random = new SecureRandom();
             long randomNumber = random.nextInt(100);
             simulation.initialize(randomNumber);
-            simulation.loopUntilPlayerSucceed();
+            simulation.loopUntilPlayerSucceed(Long.MAX_VALUE);
         } else if (args[0].equals("-auto") && pattern.matcher(args[1]).matches()) {
             ComputerPlayer player = new ComputerPlayer();
             Simulation simulation = new Simulation(player);
             simulation.initialize(Long.parseLong(args[1]));
-            simulation.loopUntilPlayerSucceed();
+            simulation.loopUntilPlayerSucceed(1000);
         }
         else {
             System.out.println(" -interactive => Human Player");
@@ -29,4 +29,3 @@ public class Launcher {
 
     }
 }
-

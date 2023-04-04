@@ -1,41 +1,50 @@
 package fr.lernejo.guessgame;
 
-import java.security.SecureRandom;
+import fr.lernejo.logger.Logger;
+import fr.lernejo.logger.LoggerFactory;
 
-public class ComputerPlayer implements Player {
-    private int min = 0, max = 100;
-    private int last = 0;
-    private final SecureRandom random = new SecureRandom();
+import java.util.Scanner;
 
-    @Override
-    public int play() {
-        last = random.nextInt(max - min + 1) + min;
-        return last;
+public class ComputerPlayer implements Player{
+    public final Logger logger = LoggerFactory.getLogger("player");
+    public Scanner console = new Scanner(System.in);
+    public long min = 0;
+
+    public long getMin() {
+        return min;
+    }
+
+    public long getMax() {
+        return max;
+    }
+
+    public long max = Integer.MAX_VALUE;
+
+    public void setMin(long min) {
+        this.min = min;
+    }
+
+    public void setMax(long max) {
+        this.max = max;
     }
 
     @Override
-    public void reset() {
-        min = 0;
-        max = 100;
+    public long askNextGuess() {
+        return 0;
+    }
+
+    public long dicho() {
+        return ((getMax() + getMin()) / 2);
     }
 
     @Override
-    public boolean hasWin() {
-        return false;
-    }
-
-    @Override
-    public int getScore() {
-        return last;
-    }
-
-    @Override
-    public void setResult(int attemptedValue, Result result) {
-        if (result == Result.TOO_HIGH) {
-            max = attemptedValue - 1;
-        } else if (result == Result.TOO_LOW) {
-            min = attemptedValue + 1;
+    public void respond(boolean lowerOrGreater) {
+        if (lowerOrGreater == true){
+            logger.log("Lower");
         }
+        else{
+            logger.log("Greater");
+        }
+
     }
 }
-
